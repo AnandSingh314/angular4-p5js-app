@@ -1,26 +1,30 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as p5 from 'p5';
+import * as p5dom from 'p5/lib/addons/p5.dom';
+import * as p5sound from 'p5/lib/addons/p5.sound';
 
-declare var p5: any;
+declare var p5sound: any;
 
 @Component({
-  selector: 'app-digital-clock',
-  templateUrl: './digital-clock.component.html',
-  styleUrls: ['./digital-clock.component.css']
+  selector: 'app-audio-dials',
+  templateUrl: './audio-dials.component.html',
+  styleUrls: ['./audio-dials.component.css']
 })
-export class DigitalClockComponent implements OnInit, OnDestroy {
+export class AudioDialsComponent implements OnInit, OnDestroy {
+
 
   private p5;
+  //private p5sound;
   private origin = { x: 0, y: 0 };
   private toggle = true;
 
   constructor() {
-    console.log('digital-constructed');
+    console.log('audio-constructed');
     window.onresize = this.onWindowResize;
   }
 
   ngOnInit() {
-    console.log('digital-init');
+    console.log('audio-init');
     this.createCanvas();
   }
 
@@ -45,9 +49,16 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
   }
 
   private drawing = function (p: any) {
+    let mic;
     p.setup = () => {
-      p.createCanvas(p.windowWidth, p.windowHeight).parent('digital-watch-canvas');
+      p.createCanvas(p.windowWidth, p.windowHeight).parent('audio-dial-canvas');
+      p.angleMode(p.DEGREES);
+      p.rectMode(p.CENTER);
       p.background(0);
+      // mic = new p5sound.AudioIn();
+      // mic.start();
+      // console.info('p5sound: ', this.);
+      // console.info('mic: ', mic);
     };
 
     p.draw = () => {
@@ -64,7 +75,8 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
 
       p.background(0);
 
-      const clock = time.hr + ':' + time.mn + ':' + time.sc;
+
+      let clock = time.hr + ':' + time.mn + ':' + time.sc;
       p.fill(255);
       p.noStroke();
       p.textSize(50);

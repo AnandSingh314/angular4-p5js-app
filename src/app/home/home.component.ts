@@ -8,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   private title = 'Angular 2 with p5 js.';
-  constructor() { }
+  constructor() {
+    console.log('home-constructed');
+  }
 
   ngOnInit() {
+    console.log('home-init');
   }
 
 }

@@ -7,10 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { P5ClockComponent } from './p5-clock/p5-clock.component';
+import { AnalogClockComponent } from './analog-clock/analog-clock.component';
 import { PathNotFoundComponent } from './path-not-found/path-not-found.component';
 import { DigitalClockComponent } from './digital-clock/digital-clock.component';
 import { HomeComponent } from './home/home.component';
+import { AudioDialsComponent } from './audio-dials/audio-dials.component';
+import { GearDialComponent } from './gear-dial/gear-dial.component';
 
 
 const appRoutes: Routes = [
@@ -20,11 +22,19 @@ const appRoutes: Routes = [
   }
   , {
     path: 'analog',
-    component: P5ClockComponent
+    component: AnalogClockComponent
   },
   {
     path: 'digital',
     component: DigitalClockComponent
+  },
+  {
+    path: 'mic-dial',
+    component: AudioDialsComponent
+  },
+  {
+    path: 'gear-dial',
+    component: GearDialComponent
   },
   {
     path: '**',
@@ -35,10 +45,12 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    P5ClockComponent,
+    AnalogClockComponent,
     PathNotFoundComponent,
     DigitalClockComponent,
-    HomeComponent
+    HomeComponent,
+    AudioDialsComponent,
+    GearDialComponent
   ],
   imports: [
     BrowserModule,

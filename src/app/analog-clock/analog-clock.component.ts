@@ -1,31 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import * as p5 from 'p5';
 // declare var p5: any;
 
 @Component({
-  selector: 'app-p5-clock',
-  templateUrl: './p5-clock.component.html',
-  styleUrls: ['./p5-clock.component.css']
+  selector: 'app-analog-clock',
+  templateUrl: './analog-clock.component.html',
+  styleUrls: ['./analog-clock.component.css']
 })
-export class P5ClockComponent implements OnInit {
+export class AnalogClockComponent implements OnInit, OnDestroy {
 
 
+  private toggle = true;
   private p5;
   constructor() {
+    console.log('Analog-constructed');
+    window.onresize = this.onWindowResize;
   }
 
   ngOnInit() {
+    console.log('analog-init');
+    this.createCanvas();
+  }
+
+  ngOnDestroy(): void {
+    this.destroyCanvas();
+    console.log('analog-destroy');
+  }
+
+  private onWindowResize = (e) => {
+    this.p5.resizeCanvas(this.p5.windowWidth, this.p5.windowHeight);
   }
 
   private createCanvas = () => {
-
     console.log('creating canvas');
     this.p5 = new p5(this.drawing);
   }
 
+  private destroyCanvas = () => {
+    console.log('destroying canvas');
+    this.p5.noCanvas();
+  }
+
   private drawing = function (p: any) {
     p.setup = () => {
-      p.createCanvas(p.windowWidth, p.windowHeight).parent('my-clock-canvas-board');
+      p.createCanvas(p.windowWidth, p.windowHeight).parent('analog-clock-canvas');
       p.angleMode(p.DEGREES);
       p.rectMode(p.CENTER);
       p.background(0);

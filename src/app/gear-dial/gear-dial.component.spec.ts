@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { P5ClockComponent } from './p5-clock.component';
+import { GearDialComponent } from './gear-dial.component';
 
-describe('P5ClockComponent', () => {
-  let component: P5ClockComponent;
-  let fixture: ComponentFixture<P5ClockComponent>;
+describe('GearDialComponent', () => {
+  let component: GearDialComponent;
+  let fixture: ComponentFixture<GearDialComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ P5ClockComponent ]
+      declarations: [ GearDialComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(P5ClockComponent);
+    fixture = TestBed.createComponent(GearDialComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
