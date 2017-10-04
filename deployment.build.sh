@@ -1,7 +1,7 @@
 #!/usr/sh
 # https://github.com/angular/angular-cli/wiki/stories-github-pages
 # ng build --prod --output-path docs --base-href PROJECT_NAME
-ng build --prod --output-path docs --base-href angular4-p5js-app
+ng build --prod --output-path docs 
 
 git add --all
 
